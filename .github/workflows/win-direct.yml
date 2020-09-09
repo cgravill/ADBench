@@ -1,4 +1,4 @@
-name: CMake
+name: ManualAndPyTorch
 
 on: [push]
 
@@ -69,7 +69,7 @@ jobs:
 
     - name: Run Benchmark Subset
       shell: pwsh
-      run: ADBench/run-all.ps1 -timeout 1800 -gmm_d_vals_param @(2,10) -gmm_k_vals_param @(5) -gmm_sizes @("1k") -ba_max_n 1 -hand_max_n 1 -hand_sizes @("small") -lstm_l_vals @(2) -lstm_c_vals @(1024)
+      run: ADBench/run-all.ps1 -timeout 1800 -tools @("Finite", "Manual", "PyTorch") -gmm_d_vals_param @(2,10) -gmm_k_vals_param @(5) -gmm_sizes @("1k") -ba_max_n 1 -hand_max_n 1 -hand_sizes @("small") -lstm_l_vals @(2) -lstm_c_vals @(1024)
 
     - name: Produce Plots
       run: python "ADBench/plot_graphs.py" --save
