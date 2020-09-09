@@ -82,3 +82,9 @@ jobs:
 
     - name: Produce Plots
       run: python "ADBench/plot_graphs.py" --save
+
+    - name: Upload Plots
+      uses: actions/upload-artifact@v2.1.4
+      with:
+        name: plots
+        path: ADBench\tmp\graphs
